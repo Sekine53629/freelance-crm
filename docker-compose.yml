@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: freelance-crm-db
+    environment:
+      POSTGRES_USER: freelance_user
+      POSTGRES_PASSWORD: freelance_pass
+      POSTGRES_DB: freelance_crm
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./migrations:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

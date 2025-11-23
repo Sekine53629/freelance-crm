@@ -1,0 +1,32 @@
+display_information:
+  name: FreelanceCRM
+  description: Freelance sales management bot
+
+features:
+  bot_user:
+    display_name: FreelanceCRM
+    always_online: true
+  slash_commands:
+    - command: /project
+      description: Open project registration form
+
+oauth_config:
+  scopes:
+    bot:
+      - chat:write
+      - commands
+      - im:history
+      - im:read
+      - im:write
+      - app_mentions:read
+
+settings:
+  event_subscriptions:
+    bot_events:
+      - message.im
+      - app_mention
+  interactivity:
+    is_enabled: true
+  org_deploy_enabled: false
+  socket_mode_enabled: true
+  token_rotation_enabled: false
