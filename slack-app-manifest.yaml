@@ -12,6 +12,10 @@ features:
       description: 案件登録フォームを開く
       usage_hint: ""
       should_escape: false
+    - command: /report
+      description: 月次レポートを生成
+      usage_hint: "[年 月]"
+      should_escape: false
 
 oauth_config:
   scopes:

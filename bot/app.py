@@ -5,6 +5,7 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 
 from config import SLACK_BOT_TOKEN, SLACK_APP_TOKEN, DEBUG
 from handlers.project_handler import register_project_handlers
+from handlers.report_handler import register_report_handlers
 
 # ログ設定
 logging.basicConfig(
@@ -27,25 +28,11 @@ def greet(message, say):
     say(f"こんにちは <@{user}>さん! 営業CRMボットです。")
 
 
-@app.message("ヘルプ")
-def show_help(message, say):
-    """ヘルプメッセージ"""
-    say(
-        "*Freelance CRM Bot コマンド一覧*\n\n"
-        "`案件登録` - 新規案件を登録\n"
-        "`案件一覧` - 最近の案件を表示\n"
-        "`/project` - 案件登録フォームを開く\n"
-        "`ヘルプ` - このメッセージを表示\n"
-    )
-
-
 @app.event("app_mention")
 def handle_mention(event, say):
     """メンション時の応答"""
-    say(
-        f"<@{event['user']}> お呼びですか?\n"
-        "`ヘルプ` と送信すると使い方を確認できます。"
-    )
+    user_id = event['user']
+    say(f"<@{user_id}> お呼びですか?\n`ヘルプ` と送信すると使い方を確認できます。")
 
 
 @app.event("message")
@@ -58,6 +45,7 @@ def handle_message_events(body, logger):
 # ハンドラー登録
 # ======================
 register_project_handlers(app)
+register_report_handlers(app)
 
 
 # ======================
