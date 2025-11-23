@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "freelance-crm"
+version = "0.2.0"
+description = "Freelance CRM - Sales and project management system"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "crm-core",
+    "crm-estimate",
+    "crm-schedule",
+    "crm-redmine",
+    "slack-bolt>=1.18",
+    "streamlit>=1.28",
+    "plotly>=5.18",
+    "pandas>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov",
+    "black",
+    "ruff",
+]
+
+[tool.setuptools]
+packages = ["bot", "dashboard"]
+
+# Development install command:
+# pip install -e packages/crm-core -e packages/crm-estimate -e packages/crm-schedule -e packages/crm-redmine -e .
