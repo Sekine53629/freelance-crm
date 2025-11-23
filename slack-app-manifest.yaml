@@ -16,6 +16,22 @@ features:
       description: 月次レポートを生成
       usage_hint: "[年 月]"
       should_escape: false
+    - command: /milestone
+      description: マイルストーンを追加
+      usage_hint: ""
+      should_escape: false
+    - command: /task
+      description: タスクを追加
+      usage_hint: ""
+      should_escape: false
+    - command: /estimate
+      description: 見積明細を追加
+      usage_hint: ""
+      should_escape: false
+    - command: /redmine-setup
+      description: Redmine連携を設定
+      usage_hint: ""
+      should_escape: false
 
 oauth_config:
   scopes:

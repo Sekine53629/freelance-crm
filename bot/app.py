@@ -6,6 +6,9 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 from config import SLACK_BOT_TOKEN, SLACK_APP_TOKEN, DEBUG
 from handlers.project_handler import register_project_handlers
 from handlers.report_handler import register_report_handlers
+from handlers.schedule_handler import register_schedule_handlers
+from handlers.estimate_handler import register_estimate_handlers
+from handlers.redmine_handler import register_redmine_handlers
 
 # ログ設定
 logging.basicConfig(
@@ -31,7 +34,7 @@ def greet(message, say):
 @app.event("app_mention")
 def handle_mention(event, say):
     """メンション時の応答"""
-    user_id = event['user']
+    user_id = event["user"]
     say(f"<@{user_id}> お呼びですか?\n`ヘルプ` と送信すると使い方を確認できます。")
 
 
@@ -46,6 +49,9 @@ def handle_message_events(body, logger):
 # ======================
 register_project_handlers(app)
 register_report_handlers(app)
+register_schedule_handlers(app)
+register_estimate_handlers(app)
+register_redmine_handlers(app)
 
 
 # ======================
